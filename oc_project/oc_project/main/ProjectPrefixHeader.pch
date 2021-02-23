@@ -10,9 +10,70 @@
 
 #import "UIColor+Common.h"
 
-//主题颜色
+//项目主题配置
 #define THEM_COLOR  [UIColor colorWithHexString:@"#FD8825"]
 
+#define WEAKSELF typeof(self) __weak weakSelf = self;
+#define STRONGSELF typeof(self) __strong strongSelf = self;
 
+////是否是空对象
+//#define IsEmpty(_object) (_object == nil \
+//|| [_object isKindOfClass:[NSNull class]] \
+//|| ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
+//|| ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
+/**字符串是否为空*/
+#define STRING_IS_EMPTY(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO || [str isEqualToString:@"<null>"] || [str isEqualToString:@"(null)"])
+/**数组是否为空*/
+#define ARRAY_IS_EMPTY(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0 || [array isEqual:@"<null>"] || [array isEqual:@"(null)"])
+/**字典是否为空*/
+#define DICT_IS_EMPTY(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0 || [dic isEqual:@"<null>"] || [dic isEqual:@"(null)"])
+/**是否为空对象*/
+#define OBJECT_IS_EMPTY(_object) (_object == nil \
+|| [_object isKindOfClass:[NSNull class]] \
+|| ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
+|| ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
+
+//不同屏幕尺寸字体适配
+#define kScreenWidthRatio  (UIScreen.mainScreen.bounds.size.width / 375.0)
+#define kScreenHeightRatio (UIScreen.mainScreen.bounds.size.height / 667.0)
+#define AdaptedWidth(x)  ceilf((x) * kScreenWidthRatio)
+#define AdaptedHeight(x) ceilf((x) * kScreenHeightRatio)
+#define AdaptedFontSize(R)     [UIFont systemFontOfSize:AdaptedWidth(R)]
+
+//判断是否有刘海屏
+#define IS_IPHONE_X \
+({BOOL IS_IPHONE_X = NO;\
+if (@available(iOS 11.0, *)) {\
+IS_IPHONE_X = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(IS_IPHONE_X);})
+
+//navBar高度
+#define kStatusBarHeight [UIApplication sharedApplication].statusBarFrame.size.height
+
+#define kDefaultNavBarHeight ([UIApplication sharedApplication].statusBarFrame.size.height + 44.0)
+/**Tabbar高度*/
+#define TabbarHeight (IS_IPHONE_X == YES ? (49.f + 34.f) : 49.f)
+/**TabbarSafe底部安全间距*/
+#define TabbarSafeBottomMargin (IS_IPHONE_X == YES ? 34.f : 0.f)
+
+/**内容视图视图安全区域*/
+#define ViewSafeAreInsets(view) ({UIEdgeInsets insets; if(@available(iOS 11.0, *)) {insets = view.safeAreaInsets;} else {insets = UIEdgeInsetsZero;} insets;})
+
+//由角度转换弧度
+#define kDegreesToRadian(x)      (M_PI * (x) / 180.0)
+//由弧度转换角度
+#define kRadianToDegrees(radian) (radian * 180.0) / (M_PI)
+
+
+#ifdef DEBUG
+
+#define NSLog(...) NSLog(@"=====Begin==========\n FILE: %@\n FUNC: %s\n LINE: %d\n %@\n\n", [NSString stringWithUTF8String:__FILE__].lastPathComponent, __PRETTY_FUNCTION__, __LINE__,[NSString stringWithFormat:__VA_ARGS__])
+
+#else
+
+#define NSLog(...)
+
+#endif
 
 #endif /* ProjectPrefixHeader_pch */

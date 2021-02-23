@@ -31,11 +31,11 @@
 //    }
     //设置tabbarItem的字体和颜色
     NSMutableDictionary *dicNormal = [NSMutableDictionary dictionary];
-//    dicNormal[NSForegroundColorAttributeName] = TabBar_TitleNormalColor;
-//    dicNormal[NSFontAttributeName] = [UIFont systemFontOfSize:12 * WIDTH_NIT];
+    dicNormal[NSForegroundColorAttributeName] = [UIColor colorWithHexString:@"#00a0ea"];
+    dicNormal[NSFontAttributeName] = AdaptedFontSize(12);
     NSMutableDictionary *dicSelect = [NSMutableDictionary dictionary];
     dicSelect[NSForegroundColorAttributeName] = THEM_COLOR;
-//    dicSelect[NSFontAttributeName] = [UIFont systemFontOfSize:12 * WIDTH_NIT];
+    dicSelect[NSFontAttributeName] = AdaptedFontSize(12);
     
     [tabBarItem setTitleTextAttributes:dicNormal forState:UIControlStateNormal];
     [tabBarItem setTitleTextAttributes:dicSelect forState:UIControlStateSelected];
