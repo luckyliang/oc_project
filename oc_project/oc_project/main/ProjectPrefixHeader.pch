@@ -1,0 +1,18 @@
+//
+//  ProjectPrefixHeader.pch
+//  oc_project
+//
+//  Created by liangcheng on 2021/2/23.
+//
+
+#ifndef ProjectPrefixHeader_pch
+#define ProjectPrefixHeader_pch
+
+#import "UIColor+Common.h"
+
+//主题颜色
+#define THEM_COLOR  [UIColor colorWithHexString:@"#FD8825"]
+
+
+
+#endif /* ProjectPrefixHeader_pch */
