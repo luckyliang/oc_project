@@ -4,4 +4,4 @@
 
 xcode12添加launchImage方法
 
-![lunchimage](/Users/liangcheng/Desktop/iOS/IosProject/oc_project/src/lunchimage.png)
+![lunchimage](https://github.com/luckyliang/oc_project/blob/main/src/lunchimage.png)
